@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo "Switching to branch main..."
-git checkout main
-
 echo "Fetching the latest files..."
 git fetch
 
