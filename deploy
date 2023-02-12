@@ -1,11 +1,13 @@
 #!/bin/sh
 
-echo "Switching to branch master"
-git checkout master
+echo "Switching to branch main"
+git checkout main
+
+echo "Install node_modules"
+npm install
 
 echo "Building app"
 npm run build
 
-echo "Deploying files to server"
-rsync -avP build/ harold.bjc@gmail.com:/var/www/haroldbjc.work/
-echo "Deployment complete"
+echo "Restart pm2"
+pm2 restart haroldbjc-work
