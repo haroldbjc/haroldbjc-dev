@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-telebort",
+  "name": "eslint-config-haroldbjc",
   "main": "index.js",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.49.0",
@@ -9,4 +9,3 @@
     "eslint-plugin-prettier": "^4.2.1"
   }
 }
-
