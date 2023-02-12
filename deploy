@@ -3,6 +3,9 @@
 echo "Switching to branch main..."
 git checkout main
 
+echo "Fetching the latest files..."
+git fetch
+
 echo "Pulling the files..."
 git pull
 
