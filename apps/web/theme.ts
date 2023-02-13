@@ -1,6 +1,6 @@
 import { MantineThemeOverride } from "@mantine/core";
 
-export const themeOverride: MantineThemeOverride = {
+const themeOverride: MantineThemeOverride = {
   defaultRadius: "md",
 
   primaryColor: "grape",
@@ -43,3 +43,5 @@ export const themeOverride: MantineThemeOverride = {
 
   dateFormat: "dd MMMM yyyy",
 };
+
+export default themeOverride;

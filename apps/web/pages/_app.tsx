@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { Chrome } from "ui";
-import { themeOverride } from "./theme";
+import themeOverride from "../theme";
 import { links } from "features/headerMenu";
 
 export default function App(props: AppProps) {
