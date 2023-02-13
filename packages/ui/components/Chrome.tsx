@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "./Footer";
 import { HeaderMenu, HeaderSearchProps } from "./HeaderMenu";
 
 type Props = {
@@ -11,6 +12,7 @@ export function Chrome({ children, links }: Props) {
     <>
       <HeaderMenu links={links} />
       <main>{children}</main>
+      <Footer />
     </>
   );
 }
