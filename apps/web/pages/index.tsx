@@ -9,9 +9,6 @@ export default function Web() {
         <title>{"Harold's Website"}</title>
       </Head>
       <Container>
-        <Head>
-          <title>Web</title>
-        </Head>
         <div className={classes.root}>
           <Text size="xl">May all the beauty be blessed.</Text>
           <Button onClick={() => alert("May all the beauty be blessed.")}>
