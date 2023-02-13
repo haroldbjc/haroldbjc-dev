@@ -1,13 +1,35 @@
+import { createStyles, Button, Container, Text } from "@mantine/core";
 import Head from "next/head";
 
 export default function Web() {
+  const { classes } = useStyles();
   return (
-    <div>
+    <>
       <Head>
-        <title>Web</title>
+        <title>{"Harold's Website"}</title>
       </Head>
-      <h1>May all the beauty be blessed.</h1>
-      <button onClick={() => alert("Hello from Web")}>Click me</button>
-    </div>
+      <Container>
+        <Head>
+          <title>Web</title>
+        </Head>
+        <div className={classes.root}>
+          <Text size="xl">May all the beauty be blessed.</Text>
+          <Button onClick={() => alert("May all the beauty be blessed.")}>
+            Button
+          </Button>
+        </div>
+      </Container>
+    </>
   );
 }
+
+const useStyles = createStyles(() => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 20,
+    justifyContent: "center",
+    minHeight: "100vh",
+  },
+}));
