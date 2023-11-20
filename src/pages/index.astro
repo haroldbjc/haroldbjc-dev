@@ -18,11 +18,7 @@ const page = {
     <article class="prose max-w-full dark:prose-invert">
       <h1>hi, i'm Harold</h1>
       <h4>i catch bugs for a living</h4>
-      {
-        allBlogPosts.map((p) => (
-          <a href={`/haroldbjc-work/blog/${p.slug}`}>{p.data.title}</a>
-        ))
-      }
+      {allBlogPosts.map((p) => <a href={`/blog/${p.slug}`}>{p.data.title}</a>)}
     </article>
   </main>
 </Layout>

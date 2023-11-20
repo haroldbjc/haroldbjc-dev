@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Links = [
-  { href: "/haroldbjc-work/", label: "blog" },
-  { href: "/haroldbjc-work/contact", label: "contact" },
+  { href: "/", label: "blog" },
+  { href: "/contact", label: "contact" },
 ];
 
 export default function Navigation() {
