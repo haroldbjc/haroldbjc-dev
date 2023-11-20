@@ -1,24 +1,16 @@
 ---
-interface Props {
-  page: {
-    title: string;
-    meta?: {
-      description: string;
-    };
-  };
-}
 import "@/styles/globals.css";
-const { page } = Astro.props;
+import Header from "@components/Header.astro";
+import { Button } from "@components/ui/button";
+import { ChevronLeftIcon } from "lucide-react";
+const { frontmatter } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={page.meta?.description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,29 +18,35 @@ const { page } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>{page.title}</title>
+    <title>{frontmatter.title}</title>
   </head>
   <body>
-    <slot />
+    <main>
+      <Header />
+      <a href="/">
+        <Button variant="link">
+          <ChevronLeftIcon className="mr-2 h-4 w-4" />back to home
+        </Button>
+      </a>
+      <article class="prose max-w-full dark:prose-invert">
+        <slot />
+      </article>
+    </main>
   </body>
 </html>
-<style is:global>
+<style>
   html {
     font-family: "Lato", sans-serif;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
   body {
     margin: 0;
+  }
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    margin-bottom: 8rem;
   }
 </style>
 

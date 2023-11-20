@@ -8,31 +8,23 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
+const Links = [
+  { href: "/", label: "blog" },
+  { href: "/contact", label: "contact" },
+];
+
 export default function Navigation() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            href="/about"
+        {Links.map(({ href, label }) => (
+          <NavigationMenuItem
+            key={`${href}${label}`}
             className={navigationMenuTriggerStyle()}
           >
-            About
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            href="/blog"
-            className={navigationMenuTriggerStyle()}
-          >
-            Blog
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+            <NavigationMenuLink href={href}>{label}</NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
         <NavigationMenuIndicator />
       </NavigationMenuList>
       <NavigationMenuViewport />

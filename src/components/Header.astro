@@ -1,9 +1,19 @@
 ---
 import Navigation from "./NavigationMenu";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Button } from "./ui/button";
+import { GithubIcon } from "lucide-react";
 ---
 
-<header class="flex flex-row w-full justify-between">
+<header class="mb-8 flex w-full flex-row justify-between">
   <nav><Navigation client:load /></nav>
-  <ThemeToggle client:load />
+  <div class="flex flex-row items-center gap-1">
+    <a href="https://github.com/haroldbjc" aria-label="Github">
+      <Button variant="ghost" size="icon">
+        <GithubIcon className="h-[1.2rem] w-[1.2rem]" />
+        <span class="sr-only">Github</span>
+      </Button>
+    </a>
+    <ThemeToggle client:load />
+  </div>
 </header>

@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { Button } from "@/components/ui/button";
+
+const page = {
+  title: "Contact",
+  meta: { description: "Contact page description" },
+};
+---
+
+<Layout page={page}>
+  <main>
+    <Header />
+    <article class="prose max-w-full dark:prose-invert">
+      <h1>contact</h1>
+      <div class="flex flex-row gap-1">
+        <a href="mailto:harold.bjc@gmail.com">
+          <Button variant="link">email</Button>
+        </a>
+        <a href="https://github.com/haroldbjc">
+          <Button variant="link">gitHub</Button>
+        </a>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>
