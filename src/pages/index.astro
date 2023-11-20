@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+    <Header />
     <svg
       class="astro-a"
       width="495"
@@ -36,7 +36,7 @@ import Card from "../components/Card.astro";
         </linearGradient>
       </defs>
     </svg>
-    <h1>Welcome to <span class="text-gradient">Harold's</span> page</h1>
+    <h1>Welcome to Harold's page</h1>
     <p class="instructions">
       To get started, open the directory <code>src/pages</code> in your project.<br
       />
@@ -65,6 +65,7 @@ import Card from "../components/Card.astro";
         body="Come say hi to our amazing Discord community. ❤️"
       />
     </ul>
+    <Footer />
   </main>
 </Layout>
 
@@ -74,7 +75,6 @@ import Card from "../components/Card.astro";
     padding: 1rem;
     width: 800px;
     max-width: calc(100% - 2rem);
-    color: white;
     font-size: 20px;
     line-height: 1.6;
   }
@@ -93,13 +93,6 @@ import Card from "../components/Card.astro";
     line-height: 1;
     text-align: center;
     margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
   }
   .instructions {
     margin-bottom: 2rem;

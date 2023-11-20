@@ -1,0 +1,9 @@
+---
+import Navigation from "./NavigationMenu";
+import { ThemeToggle } from "@/components/ThemeToggle";
+---
+
+<header class="flex flex-row w-full justify-between">
+  <nav><Navigation client:load /></nav>
+  <ThemeToggle client:load />
+</header>
