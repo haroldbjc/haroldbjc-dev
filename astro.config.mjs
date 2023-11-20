@@ -7,7 +7,7 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://haroldbjc.github.io',
-  base: '/haroldbjc-work/',
+  base: '/haroldbjc-work',
   integrations: [react({
     include: ['**/react/*']
   }), tailwind({
