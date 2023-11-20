@@ -23,12 +23,12 @@ const { frontmatter } = Astro.props;
   <body>
     <main>
       <Header />
-      <a href="/">
-        <Button variant="link">
-          <ChevronLeftIcon className="mr-2 h-4 w-4" />back to home
+      <a href="/blogs">
+        <Button variant="link" className="pl-0">
+          <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
         </Button>
       </a>
-      <article class="prose max-w-full dark:prose-invert">
+      <article class="prose mt-4 max-w-full dark:prose-invert">
         <slot />
       </article>
     </main>

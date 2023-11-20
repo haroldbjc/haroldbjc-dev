@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { getCollection } from "astro:content";
+import { BugIcon } from "lucide-react";
+const allBlogPosts = await getCollection("blog");
+
+const page = {
+  title: "Blog",
+  meta: {
+    description: "This is where I will post about my journey learning Astro.",
+  },
+};
+---
+
+<Layout page={page}>
+  <main>
+    <Header />
+    <article class="prose max-w-full dark:prose-invert">
+      <h1>blogs</h1>
+
+      {
+        allBlogPosts.map((p) => (
+          <p>
+            <>
+              <span class="inline-block align-middle">
+                <BugIcon className="h-4 w-4 mb-1 mr-2" />
+              </span>
+              <a href={`/blog/${p.slug}`}>{p.data.title}</a>
+            </>{" "}
+            - <span class="inline-block  text-xs">{p.data.pubDate}</span>
+          </p>
+        ))
+      }
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>

@@ -2,6 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import { Button } from "@/components/ui/button";
+import { BugIcon } from "lucide-react";
+
+const contacts = [
+  {
+    name: "eMail",
+    url: "mailto:harold.bjc@gmail.com",
+  },
+  {
+    name: "gitHub",
+    url: "https://github.com/haroldbjc",
+  },
+  {
+    name: "linkedIn",
+    url: "https://www.linkedin.com/in/haroldbong/",
+  },
+];
 
 const page = {
   title: "Contact",
@@ -15,12 +31,16 @@ const page = {
     <article class="prose max-w-full dark:prose-invert">
       <h1>contact</h1>
       <div class="flex flex-row gap-1">
-        <a href="mailto:harold.bjc@gmail.com">
-          <Button variant="link">email</Button>
-        </a>
-        <a href="https://github.com/haroldbjc">
-          <Button variant="link">gitHub</Button>
-        </a>
+        {
+          contacts.map((contact) => (
+            <a href={contact.url}>
+              <Button variant="link">
+                <BugIcon className="mr-2 h-4 w-4" />
+                {contact.name}
+              </Button>
+            </a>
+          ))
+        }
       </div>
     </article>
   </main>

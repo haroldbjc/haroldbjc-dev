@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import { getCollection } from "astro:content";
-const allBlogPosts = await getCollection("blog");
+import { BugIcon } from "lucide-react";
+import { Button } from "@components/ui/button";
 
 const page = {
-  title: "Blog",
+  title: "Home",
   meta: {
-    description: "This is where I will post about my journey learning Astro.",
+    description: "This is the home page",
   },
 };
 ---
@@ -15,11 +15,30 @@ const page = {
 <Layout page={page}>
   <main>
     <Header />
-    <article class="prose max-w-full dark:prose-invert">
+    <div
+      class="prose flex h-[60vh] max-w-full flex-col items-start justify-center gap-0 dark:prose-invert"
+    >
       <h1>hi, i'm Harold</h1>
-      <h4>i catch bugs for a living</h4>
-      {allBlogPosts.map((p) => <a href={`/blog/${p.slug}`}>{p.data.title}</a>)}
-    </article>
+      <p class="text-large font-bold">
+        i catch <span class="mx-1 mb-1 inline-block align-middle"
+          ><BugIcon className="h-4 w-4" /></span
+        > for a living
+      </p>
+      <p>find more bugs ahead</p>
+      <div class="flex flex-row gap-1">
+        <a href="/blogs">
+          <Button variant="outline">
+            <BugIcon className="mr-2 h-4 w-4" />
+             blogs
+          </Button>
+        </a>
+        <a href="/contact">
+          <Button variant="outline">
+            <BugIcon className="mr-2 h-4 w-4" />contact
+          </Button>
+        </a>
+      </div>
+    </div>
   </main>
 </Layout>
 
@@ -31,6 +50,7 @@ const page = {
     max-width: calc(100% - 2rem);
     font-size: 20px;
     line-height: 1.6;
+    height: 100%;
   }
 </style>
 

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: "the hello world post"
-pubDate: 2023-11-23
+pubDate: "20th oct 2023"
 description: "My very first blog post."
 author: "Harold Bong"
 tags: ["astro", "blogging", "learning in public"]

@@ -3,17 +3,12 @@ import Navigation from "./NavigationMenu";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "./ui/button";
 import { GithubIcon } from "lucide-react";
+import BrandIcon from "./BrandIcon";
 ---
 
 <header class="mb-8 flex w-full flex-row justify-between">
   <nav class="flex flex-row items-center gap-1">
-    <a
-      href="/"
-      class="font-italic flex h-full flex-row items-center gap-1 text-sm font-bold"
-    >
-      <img src="/favicon.svg" alt="logo" class="h-6 w-6" />
-       harold
-    </a>
+    <BrandIcon client:load />
     <Navigation client:load />
   </nav>
   <div class="flex flex-row items-center gap-1">

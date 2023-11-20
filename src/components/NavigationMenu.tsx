@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Links = [
-  { href: "/", label: "blog" },
+  { href: "/blogs", label: "blogs" },
   { href: "/contact", label: "contact" },
 ];
 
