@@ -1,7 +1,8 @@
 {
-  "name": "haroldbjc-work",
-  "type": "module",
+  "name": "haroldbjc-dev",
   "version": "0.0.1",
+  "type": "module",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

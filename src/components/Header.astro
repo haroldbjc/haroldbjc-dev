@@ -6,7 +6,16 @@ import { GithubIcon } from "lucide-react";
 ---
 
 <header class="mb-8 flex w-full flex-row justify-between">
-  <nav><Navigation client:load /></nav>
+  <nav class="flex flex-row items-center gap-1">
+    <a
+      href="/"
+      class="font-italic flex h-full flex-row items-center gap-1 text-sm font-bold"
+    >
+      <img src="/favicon.svg" alt="logo" class="h-6 w-6" />
+       harold
+    </a>
+    <Navigation client:load />
+  </nav>
   <div class="flex flex-row items-center gap-1">
     <a href="https://github.com/haroldbjc" aria-label="Github">
       <Button variant="ghost" size="icon">
