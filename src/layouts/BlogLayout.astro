@@ -1,8 +1,9 @@
 ---
-import Header from "@components/Header.astro";
+import Header from "@components/layout/Header.astro";
 import { Button } from "@components/ui/button";
 import { ChevronLeftIcon } from "lucide-react";
 const { frontmatter } = Astro.props;
+import { Toaster } from "@/components/ui/toaster";
 import "@/styles/globals.css";
 ---
 
@@ -26,6 +27,7 @@ import "@/styles/globals.css";
         <slot />
       </article>
     </main>
+    <Toaster client:load />
   </body>
 </html>
 <style>
@@ -37,27 +39,3 @@ import "@/styles/globals.css";
     margin-bottom: 8rem;
   }
 </style>
-
-<script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-  const isDark = getThemePreference() === "dark";
-  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
-</script>

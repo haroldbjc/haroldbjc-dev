@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import Header from "../components/layout/Header.astro";
 import { getCollection } from "astro:content";
 import { BugIcon } from "lucide-react";
 const allBlogPosts = await getCollection("blog");
@@ -19,6 +19,10 @@ const page = {
     <Header />
     <article class="prose max-w-full dark:prose-invert">
       <h1>blogs</h1>
+      <p>
+        oh, I have a blog now. I'm not sure what I'll write about, but I'll
+        figure it out.
+      </p>
 
       {
         allBlogPosts.map((p) => (
