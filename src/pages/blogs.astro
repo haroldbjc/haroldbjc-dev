@@ -3,7 +3,17 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/layout/Header.astro";
 import { getCollection } from "astro:content";
 import { BugIcon } from "lucide-react";
-const allBlogPosts = await getCollection("blog");
+
+const allBlogPosts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedBlogPosts = allBlogPosts.sort((a, b) => {
+  return (
+    new Date(b.data.publishDate).getTime() -
+    new Date(a.data.publishDate).getTime()
+  );
+});
 
 const page = {
   title: "Blog",
@@ -25,11 +35,11 @@ const page = {
       </p>
 
       {
-        allBlogPosts.map((p) => (
+        sortedBlogPosts.map((p) => (
           <p>
             <>
               <span class="inline-block align-middle">
-                <BugIcon className="h-4 w-4 mb-1 mr-2" />
+                <BugIcon className="h-4 w-4 mr-1" />
               </span>
               <a href={`/blogs/${p.slug}`}>{p.data.title}</a>
             </>{" "}

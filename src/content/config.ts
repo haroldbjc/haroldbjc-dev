@@ -6,9 +6,10 @@ const blogCollection = defineCollection({
   type: "content", // v2.5.0 and later
   schema: z.object({
     title: z.string(),
-    tags: z.array(z.string()),
+    publishDate: z.string().transform((str) => new Date(str)),
     image: z.string().optional(),
     pubDate: z.string().optional(),
+    draft: z.boolean().optional(),
   }),
 });
 
