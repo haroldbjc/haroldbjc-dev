@@ -7,9 +7,12 @@ author: "Harold Bong"
 tags: ["astro", "blogging", "learning in public"]
 ---
 
+import { Image } from "astro:assets";
+import dog from "/src/assets/images/dog-screen.jpg";
+
 # hello world
 
-![dog staring at screen](https://i.pinimg.com/1200x/c9/87/3d/c9873d2dc8df631288ad8d79666b9ebb.jpg)
+<Image src={dog} alt="dog" loading="eager" />
 
 It's been some time that I code for my personal website. Trying out Astro for the first time and I'm excited to see how this goes. I'm also trying to learn in public, so I'll be documenting my journey here.
 
