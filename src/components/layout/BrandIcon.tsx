@@ -7,7 +7,7 @@ import {
 import { BugIcon, ShellIcon } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
-const BrandIcon = () => {
+export default function BrandIcon() {
   const { toast } = useToast();
   return (
     <TooltipProvider delayDuration={2000}>
@@ -39,6 +39,4 @@ const BrandIcon = () => {
       </Tooltip>
     </TooltipProvider>
   );
-};
-
-export default BrandIcon;
+}
