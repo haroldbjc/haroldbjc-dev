@@ -11,7 +11,7 @@ export default defineConfig({
   output: 'static',
   server: {
     headers: {
-      "cache-control": "public, max-age=31536000"
+      "cache-control": "public, max-age=600, must-revalidate",
     }
   },
   integrations: [
