@@ -14,9 +14,14 @@ export default defineConfig({
       "cache-control": "public, max-age=31536000"
     }
   },
-  integrations: [react({
-    include: ['**/react/*']
-  }), tailwind({
-    applyBaseStyles: false
-  }), robotsTxt(), mdx()]
+  integrations: [
+    react({
+      include: ['**/react/*']
+    }),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    robotsTxt(),
+    mdx()
+  ]
 });
