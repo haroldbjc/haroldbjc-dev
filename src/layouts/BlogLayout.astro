@@ -1,6 +1,7 @@
 ---
 import Header from "@components/layout/Header.astro";
 import { Button } from "@components/ui/button";
+import { ViewTransitions } from "astro:transitions";
 import { ChevronLeftIcon } from "lucide-react";
 const { frontmatter } = Astro.props;
 import { Toaster } from "@/components/ui/toaster";
@@ -14,28 +15,33 @@ import "@/styles/globals.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={frontmatter.description} />
     <title>{frontmatter.title}</title>
+    <ViewTransitions />
   </head>
   <body>
-    <main>
-      <Header />
+    <main transition:animate="slide">
       <a href="/blogs">
         <Button variant="link" className="pl-0">
           <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
         </Button>
       </a>
-      <article class="prose mt-4 max-w-full dark:prose-invert">
+      <article class="prose my-4 max-w-full dark:prose-invert">
         <slot />
       </article>
+      <a href="/blogs">
+        <Button variant="link" className="pl-0">
+          <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
+        </Button>
+      </a>
     </main>
     <Toaster client:load />
+    <style>
+      main {
+        margin: auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 2rem);
+        margin-bottom: 8rem;
+      }
+    </style>
   </body>
 </html>
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    margin-bottom: 8rem;
-  }
-</style>
