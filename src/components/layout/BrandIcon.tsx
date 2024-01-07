@@ -17,7 +17,7 @@ export default function BrandIcon() {
             href="/"
             className="font-italic mr-2 flex h-full flex-row items-center text-sm font-bold"
           >
-            <ShellIcon className="mr-1 h-6 w-6" />
+            <ShellIcon className="mr-1" />
             harold
           </a>
         </TooltipTrigger>
@@ -25,7 +25,6 @@ export default function BrandIcon() {
           <p>
             <span className="mx-1 mb-1 inline-block align-middle">
               <BugIcon
-                className="h-4 w-4"
                 onClick={() =>
                   toast({
                     description: "hi",
