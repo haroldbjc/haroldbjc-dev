@@ -1,14 +1,77 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { CheckIcon, Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useMounted } from "@/hooks/use-mounted";
+
+const SunIcon = () => (
+  <>
+    <motion.svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ scale: 0.5, opacity: 0, rotate: 90 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        rotate: 0,
+        transition: { duration: 0.2, type: "spring", stiffness: 100 },
+      }}
+      exit={{
+        scale: 0.5,
+        opacity: 0,
+        rotate: 90,
+        transition: { duration: 0.2 },
+      }}
+    >
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </motion.svg>
+  </>
+);
+
+const MoonIcon = () => (
+  <>
+    <motion.svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      initial={{ scale: 0.5, opacity: 0, rotate: 90 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        rotate: 0,
+        transition: { duration: 0.2, type: "spring", stiffness: 100 },
+      }}
+      exit={{
+        scale: 0.5,
+        opacity: 0,
+        rotate: 90,
+        transition: { duration: 0.2 },
+      }}
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </motion.svg>
+  </>
+);
 
 export default function ThemeToggle() {
   const [theme, setThemeState] = useState(() => {
@@ -21,9 +84,10 @@ export default function ThemeToggle() {
     return "light";
   });
 
-  const setTheme = (theme: string) => {
-    localStorage.setItem("theme", theme);
-    setThemeState(theme);
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    setThemeState(newTheme);
   };
 
   const mounted = useMounted();
@@ -38,41 +102,12 @@ export default function ThemeToggle() {
   }, [theme]);
 
   return mounted ? (
-    <DropdownMenu modal={false}>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Sun
-            className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-            size={18}
-          />
-          <Moon
-            className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-            size={18}
-          />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={() => setTheme("light")}
-          className="flex items-center justify-between"
-        >
-          Light {theme === "light" && <CheckIcon className="scale-50" />}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("dark")}
-          className="flex items-center justify-between"
-        >
-          Dark {theme === "dark" && <CheckIcon className="scale-50" />}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("system")}
-          className="flex items-center justify-between"
-        >
-          System {theme === "system" && <CheckIcon className="scale-50" />}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button variant="ghost" size="icon" onClick={toggleTheme}>
+      <span className="sr-only">Toggle mode</span>
+      <AnimatePresence initial={false}>
+        {theme !== "dark" ? <SunIcon /> : <MoonIcon />}
+      </AnimatePresence>
+    </Button>
   ) : (
     <div />
   );
