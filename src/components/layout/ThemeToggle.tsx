@@ -8,26 +8,36 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useMounted } from "@/hooks/use-mounted";
 
 export default function ThemeToggle() {
-  const [theme, setThemeState] = useState<"theme-light" | "dark" | "system">(
-    "theme-light",
-  );
+  const [theme, setThemeState] = useState(() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  });
+
+  const setTheme = (theme: string) => {
+    localStorage.setItem("theme", theme);
+    setThemeState(theme);
+  };
+
+  const mounted = useMounted();
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setThemeState(isDarkMode ? "dark" : "theme-light");
-  }, []);
-
-  useEffect(() => {
-    const isDark =
-      theme === "dark" ||
-      (theme === "system" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    const root = document.documentElement;
+    if (theme === "light") {
+      root.classList.remove("dark");
+    } else {
+      root.classList.add("dark");
+    }
   }, [theme]);
 
-  return (
+  return mounted ? (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
@@ -44,24 +54,26 @@ export default function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
-          onClick={() => setThemeState("theme-light")}
+          onClick={() => setTheme("light")}
           className="flex items-center justify-between"
         >
-          Light {theme === "theme-light" && <CheckIcon className="scale-50" />}
+          Light {theme === "light" && <CheckIcon className="scale-50" />}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setThemeState("dark")}
+          onClick={() => setTheme("dark")}
           className="flex items-center justify-between"
         >
           Dark {theme === "dark" && <CheckIcon className="scale-50" />}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setThemeState("system")}
+          onClick={() => setTheme("system")}
           className="flex items-center justify-between"
         >
           System {theme === "system" && <CheckIcon className="scale-50" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  ) : (
+    <div />
   );
 }

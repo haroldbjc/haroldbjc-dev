@@ -6,16 +6,24 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://haroldbjc.github.io',
-  output: 'static',
+  site: 'https://haroldbjc.dev',
   server: {
     headers: {
       "cache-control": "public, max-age=600, must-revalidate"
     }
   },
-  integrations: [react({
-    include: ['**/react/*']
-  }), tailwind({
-    applyBaseStyles: false
-  }), robotsTxt(), mdx()]
+  integrations: [
+    react({
+      include: ['**/react/*']
+    }),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    robotsTxt(),
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: { theme: 'github-dark-dimmed' },
+      gfm: true,
+    })
+  ]
 });
