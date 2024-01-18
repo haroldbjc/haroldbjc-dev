@@ -6,7 +6,9 @@ import { GithubIcon } from "lucide-react";
 import BrandIcon from "./BrandIcon";
 ---
 
-<header class="mb-8 flex w-full flex-row justify-between">
+<header
+  class="sticky top-0 z-50 flex w-full flex-row justify-between bg-background px-6 py-4"
+>
   <nav class="flex flex-row items-center gap-1">
     <BrandIcon client:load />
     <Navigation client:load />

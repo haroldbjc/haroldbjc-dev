@@ -1,56 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
 import { BugIcon } from "lucide-react";
 import { Button } from "@components/ui/button";
+import MainLayout from "../layouts/main-layout.astro";
 
 const page = {
   title: "hi, I'm Harold",
-  meta: {
-    description: "i catch bugs for a living",
-    image: "/public/favicon.svg",
-  },
+  description: "I catch bugs for a living",
 };
 ---
 
-<Layout page={page}>
-  <main>
-    <Header />
-    <div
-      class="prose flex h-[60vh] max-w-full flex-col items-start justify-center gap-0 dark:prose-invert"
-    >
-      <h1>hi, i'm Harold</h1>
-      <p class="text-large font-bold">
-        i catch <span class="mx-1 mb-1 inline-block align-middle"
-          ><BugIcon className="h-4 w-4" /></span
-        > for a living
-      </p>
-      <p>find more bugs ahead</p>
-      <div class="flex flex-row gap-1">
-        <a href="/blogs">
-          <Button variant="outline">
-            <BugIcon className="mr-2 h-4 w-4" />
-             blogs
-          </Button>
-        </a>
-        <a href="/contact">
-          <Button variant="outline">
-            <BugIcon className="mr-2 h-4 w-4" />contact
-          </Button>
-        </a>
-      </div>
+<MainLayout title={page.title} description={page.description}>
+  <div
+    class="prose flex h-[60vh] max-w-full flex-col items-start justify-center gap-0 dark:prose-invert"
+  >
+    <h1>hi, i'm Harold</h1>
+    <p class="text-large font-bold">
+      i catch <span class="mx-1 mb-1 inline-block align-middle"
+        ><BugIcon className="h-4 w-4" /></span
+      > for a living
+    </p>
+    <p>find more bugs ahead</p>
+    <div class="flex flex-row gap-1">
+      <a href="/blogs">
+        <Button variant="outline">
+          <BugIcon className="mr-2 h-4 w-4" />
+          blogs
+        </Button>
+      </a>
+      <a href="/contact">
+        <Button variant="outline">
+          <BugIcon className="mr-2 h-4 w-4" />contact
+        </Button>
+      </a>
     </div>
-  </main>
-</Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    font-size: 20px;
-    line-height: 1.6;
-    height: 100%;
-  }
-</style>
+  </div>
+</MainLayout>

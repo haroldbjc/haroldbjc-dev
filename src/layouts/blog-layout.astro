@@ -1,0 +1,35 @@
+---
+import { Button } from "@components/ui/button";
+import { BugIcon, ChevronLeftIcon } from "lucide-react";
+import MainLayout from "./main-layout.astro";
+const { title, description } = Astro.props.data;
+---
+
+<MainLayout title={title} description={description}>
+  <div transition:animate="slide" class="pb-8">
+    <a href="/blogs">
+      <Button variant="link" className="pl-0">
+        <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
+      </Button>
+    </a>
+    <article class="prose my-4 max-w-full dark:prose-invert">
+      <slot />
+    </article>
+    <div class="flex items-center justify-center py-10">
+      <hr class="w-1/4" />
+      <span class="mx-4 text-sm text-gray-500 dark:text-gray-400"
+        ><span class="mx-1 mb-1 inline-block align-middle"
+          ><BugIcon className="h-4 w-4" /></span
+        > end <span class="mx-1 mb-1 inline-block align-middle"
+          ><BugIcon className="h-4 w-4" /></span
+        ></span
+      >
+      <hr class="w-1/4" />
+    </div>
+    <a href="/blogs">
+      <Button variant="link" className="pl-0">
+        <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
+      </Button>
+    </a>
+  </div>
+</MainLayout>

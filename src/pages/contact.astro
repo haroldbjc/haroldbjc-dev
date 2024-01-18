@@ -1,8 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
 import { Button } from "@/components/ui/button";
 import { BugIcon } from "lucide-react";
+import MainLayout from "../layouts/main-layout.astro";
 
 const contacts = [
   {
@@ -21,43 +20,26 @@ const contacts = [
 
 const page = {
   title: "Contact",
-  meta: {
-    description: "Contact page description",
-    image: "/public/favicon.svg",
-  },
+  description: "Contact page description",
 };
 ---
 
-<Layout page={page}>
-  <main>
-    <Header />
-    <article class="prose max-w-full dark:prose-invert">
-      <h1>contact</h1>
-      <p>you found me!</p>
+<MainLayout title={page.title} description={page.description}>
+  <article class="prose max-w-full dark:prose-invert">
+    <h1>contact</h1>
+    <p>you found me!</p>
 
-      <div class="flex flex-row gap-1">
-        {
-          contacts.map((contact) => (
-            <a href={contact.url}>
-              <Button variant="link">
-                <BugIcon className="mr-2 h-4 w-4" />
-                {contact.name}
-              </Button>
-            </a>
-          ))
-        }
-      </div>
-    </article>
-  </main>
-</Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    font-size: 20px;
-    line-height: 1.6;
-  }
-</style>
+    <div class="flex flex-row gap-1">
+      {
+        contacts.map((contact) => (
+          <a href={contact.url}>
+            <Button variant="link">
+              <BugIcon className="mr-2 h-4 w-4" />
+              {contact.name}
+            </Button>
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>
