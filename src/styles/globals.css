@@ -67,8 +67,18 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("/fonts/Lato-Regular.woff2") format("woff2");
+  }
   * {
     @apply border-border;
+  }
+  html {
+    width: 100vw;
   }
   body {
     @apply bg-background text-foreground;
