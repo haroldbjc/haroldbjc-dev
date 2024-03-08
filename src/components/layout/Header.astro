@@ -2,27 +2,13 @@
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "../ui/button";
 import { GithubIcon } from "lucide-react";
-import BrandIcon from "./BrandIcon";
-
-const Links = [
-  { href: "/blogs", label: "blogs" },
-  { href: "/contact", label: "contact" },
-];
+import MainNav from "./MainNav";
 ---
 
 <header
   class="mx-auto flex w-full max-w-4xl flex-row justify-between px-6 py-4"
 >
-  <nav class="flex flex-row items-center gap-1">
-    <BrandIcon />
-    {
-      Links.map(({ href, label }) => (
-        <a href={href}>
-          <Button variant="link">{label}</Button>
-        </a>
-      ))
-    }
-  </nav>
+  <MainNav client:only="react" />
   <div class="flex flex-row items-center gap-1">
     <a href="https://github.com/haroldbjc/haroldbjc-dev" aria-label="Github">
       <Button variant="ghost" size="icon">
@@ -30,6 +16,6 @@ const Links = [
         <span class="sr-only">Github</span>
       </Button>
     </a>
-    <ThemeToggle client:only />
+    <ThemeToggle client:only="react" />
   </div>
 </header>
