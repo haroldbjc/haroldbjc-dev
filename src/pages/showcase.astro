@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@layouts/main-layout.astro";
+import { Image } from "astro:assets";
+
+const allShowcasePosts = await getCollection("showcase", ({ data }) => {
+  return data.draft !== true;
+});
+
+const page = {
+  title: "Showcase",
+  description:
+    "some of the projects I've worked on, and some of the things I've built.",
+};
+---
+
+<MainLayout title={page.title} description={page.description}>
+  <div class="mt-[15%] max-w-full">
+    <div class="prose dark:prose-invert">
+      <h1>📚 showcase</h1>
+      <p>
+        some of the projects I've worked on, and some of the things I've built.
+      </p>
+    </div>
+
+    {
+      allShowcasePosts.map((p) => (
+        <div class="mt-8 flex flex-col space-y-3 transition-all duration-200 md:flex-row-reverse md:items-center md:justify-between md:gap-2">
+          <div class="flex-shrink-0">
+            <Image
+              src={p.data.image}
+              alt={p.data.title}
+              width={400}
+              height={200}
+              class="aspect-[2/1] h-auto w-full rounded-md border-2 border-foreground bg-foreground/75 object-cover md:h-52 md:w-auto"
+            />
+          </div>
+          <div class="prose flex-grow p-0 text-sm dark:prose-invert md:p-2 md:text-center">
+            <a
+              href={`/showcase/${p.slug}`}
+              class="text-lg font-medium leading-none"
+            >
+              {p.data.title}
+            </a>
+            <p class="text-xs text-muted-foreground">{p.data.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</MainLayout>

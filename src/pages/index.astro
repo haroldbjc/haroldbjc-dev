@@ -1,7 +1,7 @@
 ---
 import { BugIcon } from "lucide-react";
 import { Button } from "@components/ui/button";
-import MainLayout from "../layouts/main-layout.astro";
+import MainLayout from "@/layouts/main-layout.astro";
 
 const page = {
   title: "hi, I'm Harold",
@@ -11,9 +11,9 @@ const page = {
 
 <MainLayout title={page.title} description={page.description}>
   <div
-    class="prose flex h-[60vh] max-w-full flex-col items-start justify-center gap-0 dark:prose-invert"
+    class="prose mt-[15%] flex max-w-full flex-col items-start justify-center gap-0 dark:prose-invert"
   >
-    <h1>hi, i'm Harold</h1>
+    <h1>🐞 hi, i'm Harold</h1>
     <p class="text-large font-bold">
       i catch <span class="mx-1 mb-1 inline-block align-middle"
         ><BugIcon className="h-4 w-4" /></span
