@@ -1,9 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@layouts/main-layout.astro";
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{jpeg,jpg,png,gif}",
+);
+
 const allShowcasePosts = await getCollection("showcase", ({ data }) => {
+  if (!images[data.image])
+    throw new Error(
+      `"${data.image}" does not exist in glob: "src/assets/images*.{jpeg,jpg,png,gif}"`,
+    );
   return data.draft !== true;
 });
 
@@ -25,14 +34,25 @@ const page = {
 
     {
       allShowcasePosts.map((p) => (
-        <div class="prose mt-8 max-w-full p-0 text-sm dark:prose-invert md:p-2">
-          <a
-            href={`/showcase/${p.slug}`}
-            class="text-lg font-medium leading-none"
-          >
-            {p.data.title}
-          </a>
-          <p class="text-xs text-muted-foreground">{p.data.description}</p>
+        <div class="mt-8 flex flex-col space-y-3 transition-all duration-200 md:flex-row-reverse md:items-center md:justify-between md:gap-2">
+          <div class="flex-shrink-0">
+            <Image
+              src={images[p.data.image]()}
+              alt={p.data.title}
+              width={400}
+              height={200}
+              class="aspect-[2/1] h-auto w-full rounded-sm bg-foreground/75 object-cover md:h-52 md:w-auto"
+            />
+          </div>
+          <div class="prose flex-grow p-0 text-sm dark:prose-invert md:p-2 md:text-center">
+            <a
+              href={`/showcase/${p.slug}`}
+              class="text-lg font-medium leading-none"
+            >
+              {p.data.title}
+            </a>
+            <p class="text-xs text-muted-foreground">{p.data.description}</p>
+          </div>
         </div>
       ))
     }
