@@ -20,9 +20,9 @@ const allShowcasePosts = await getCollection("showcase", ({ data }) => {
   return data.draft !== true;
 });
 
-const handleCardClick = (slug: string) => {
-  location.href = `/showcase/${slug}`;
-};
+const sortedShowcasePosts = allShowcasePosts.sort((a, b) => {
+  return a.data.order - b.data.order;
+});
 
 const page = {
   title: "Showcase",
@@ -41,8 +41,8 @@ const page = {
     </div>
     <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
       {
-        allShowcasePosts.map((p) => (
-          <Card key={p.slug} onClick={() => handleCardClick(p.slug)}>
+        sortedShowcasePosts.map((p) => (
+          <Card key={p.slug}>
             <CardContent className="pt-6">
               <Image
                 src={images[p.data.image]()}
