@@ -1,8 +1,5 @@
 module.exports = {
-  extends: [
-    "plugin:astro/recommended",
-    "prettier",
-  ],
+  extends: ["plugin:astro/recommended", "prettier"],
   plugins: ["@typescript-eslint", "prettier", "import"],
   parser: "@typescript-eslint/parser",
   parserOptions: {

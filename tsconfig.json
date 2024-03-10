@@ -15,7 +15,8 @@
     "**/*.tsx",
     "**/*.astro",
     ".eslintrc.cjs",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "astro.config.mjs"
   ],
   "exclude": ["node_modules"],
   "extends": "astro/tsconfigs/base"
