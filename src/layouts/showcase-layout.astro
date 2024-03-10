@@ -3,16 +3,22 @@ import { Button } from "@components/ui/button";
 import { BugIcon, ChevronLeftIcon } from "lucide-react";
 
 import MainLayout from "./main-layout.astro";
+
 const { title, description } = Astro.props.data;
 ---
 
 <MainLayout title={title} description={description}>
-  <div transition:animate="slide" class="pb-8">
-    <a href="/showcase">
+  <div class="pb-8">
+    <a onclick="history.back()">
       <Button variant="link" className="pl-0">
-        <ChevronLeftIcon className="mr-2 h-4 w-4" />back to showcase
+        <ChevronLeftIcon className="mr-2 h-4 w-4" />back
       </Button>
     </a>
+    <div class="prose mt-4 dark:prose-invert">
+      <h2 class="w-fit" transition:name={`showcase-${title}`}>
+        {title}
+      </h2>
+    </div>
     <article class="prose my-4 max-w-full dark:prose-invert">
       <slot />
     </article>
@@ -27,9 +33,9 @@ const { title, description } = Astro.props.data;
       >
       <hr class="w-1/4" />
     </div>
-    <a href="/showcase">
+    <a onclick="history.back()">
       <Button variant="link" className="pl-0">
-        <ChevronLeftIcon className="mr-2 h-4 w-4" />back to showcase
+        <ChevronLeftIcon className="mr-2 h-4 w-4" />back
       </Button>
     </a>
   </div>

@@ -7,12 +7,13 @@ const { title, description } = Astro.props.data;
 ---
 
 <MainLayout title={title} description={description}>
-  <div transition:animate="slide" class="pb-8">
+  <div class="pb-8">
     <a href="/blogs">
       <Button variant="link" className="pl-0">
         <ChevronLeftIcon className="mr-2 h-4 w-4" />back to blogs
       </Button>
     </a>
+
     <article class="prose my-4 max-w-full dark:prose-invert">
       <slot />
     </article>

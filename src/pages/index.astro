@@ -26,20 +26,23 @@ const page = {
       <a
         href="/blogs"
         class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
+        transition:name="blogs-title"
       >
-        <BugIcon className="mr-2 h-4 w-4" /> blogs
+        📖 blogs
       </a>
       <a
         href="/showcase"
         class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
+        transition:name="showcase-title"
       >
-        <BugIcon className="mr-2 h-4 w-4" /> showcase
+        📚 showcase
       </a>
       <a
         href="/contact"
         class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
+        transition:name="contact-title"
       >
-        <BugIcon className="mr-2 h-4 w-4" /> contact
+        📞 contact
       </a>
     </div>
   </div>
