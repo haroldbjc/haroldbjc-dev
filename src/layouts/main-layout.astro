@@ -1,8 +1,10 @@
 ---
+import Header from "@components/layout/Header.astro";
+
+import BaseLayout from "./base-layout.astro";
+
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import BaseLayout from "./base-layout.astro";
-import Header from "@components/layout/Header.astro";
 type Props = {
   title: string;
   description?: string;

@@ -10,6 +10,13 @@
       "@/*": ["./src/*"]
     }
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.astro",
+    ".eslintrc.cjs",
+    "tailwind.config.js"
+  ],
   "exclude": ["node_modules"],
   "extends": "astro/tsconfigs/base"
 }
