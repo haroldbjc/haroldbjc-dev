@@ -40,7 +40,10 @@ const page = {
 <MainLayout title={page.title} description={page.description}>
   <div class="mt-[15%] max-w-full">
     <div class="prose dark:prose-invert">
-      <h1 class="w-fit" transition:name="showcase-title">📚 showcase</h1>
+      <h1 class="w-fit">
+        <span transition:name="showcase-icon">📚</span>
+        <span transition:name="showcase-title">showcase</span>
+      </h1>
       <p>
         some of the projects I've worked on, and some of the things I've built.
       </p>

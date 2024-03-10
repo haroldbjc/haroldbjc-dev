@@ -6,8 +6,8 @@ export default function BrandIcon() {
       href="/"
       className="font-italic mr-2 flex h-full flex-row items-center text-sm font-bold"
     >
-      <ShellIcon className="mr-1" />
-      harold
+      <ShellIcon />
+      <span className="ml-1 hidden lg:block">harold</span>
     </a>
   );
 }

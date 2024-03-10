@@ -9,6 +9,12 @@ const page = {
   title: "hi, I'm Harold",
   description: "I catch bugs for a living",
 };
+
+const navLinks = [
+  { href: "/blogs", label: "blogs", icon: "📝" },
+  { href: "/showcase", label: "showcase", icon: "📚" },
+  { href: "/contact", label: "contact", icon: "📞" },
+];
 ---
 
 <MainLayout title={page.title} description={page.description}>
@@ -23,27 +29,20 @@ const page = {
     </p>
     <p>find more bugs ahead</p>
     <div class="flex flex-row gap-1">
-      <a
-        href="/blogs"
-        class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
-        transition:name="blogs-title"
-      >
-        📖 blogs
-      </a>
-      <a
-        href="/showcase"
-        class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
-        transition:name="showcase-title"
-      >
-        📚 showcase
-      </a>
-      <a
-        href="/contact"
-        class={cn(buttonVariants({ variant: "outline" }), "no-underline")}
-        transition:name="contact-title"
-      >
-        📞 contact
-      </a>
+      {
+        navLinks.map(({ href, label, icon }) => (
+          <a
+            href={href}
+            class={cn(
+              buttonVariants({ variant: "outline" }),
+              "flex h-20 w-20 flex-col items-center justify-center gap-1 no-underline",
+            )}
+          >
+            <span transition:name={`${label}-icon`}>{icon}</span>
+            <span transition:name={`${label}-title`}>{label}</span>
+          </a>
+        ))
+      }
     </div>
   </div>
 </MainLayout>
