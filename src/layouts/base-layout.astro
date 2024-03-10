@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@/components/layout/base-head.astro";
+import ScrollTop from "@/components/layout/ScrollTop";
 
 type Props = {
   title: string;
@@ -17,5 +18,6 @@ const { title, description, bodyClass } = Astro.props;
   </head>
   <body class={bodyClass}>
     <slot />
+    <ScrollTop client:only="react" />
   </body>
 </html>

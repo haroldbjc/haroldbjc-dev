@@ -48,7 +48,7 @@ const page = {
     <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
       {
         sortedShowcasePosts.map((p) => (
-          <Card key={p.slug}>
+          <Card key={p.slug} id={p.data.title}>
             <CardHeader>
               <div class="prose dark:prose-invert">
                 <h2 class="w-fit" transition:name={`showcase-${p.data.title}`}>

@@ -9,7 +9,7 @@ const { title, description } = Astro.props.data;
 
 <MainLayout title={title} description={description}>
   <div class="pb-8">
-    <a onclick="history.back()">
+    <a href={`/showcase#${title}`}>
       <Button variant="link" className="pl-0">
         <ChevronLeftIcon className="mr-2 h-4 w-4" />back
       </Button>
@@ -33,7 +33,7 @@ const { title, description } = Astro.props.data;
       >
       <hr class="w-1/4" />
     </div>
-    <a onclick="history.back()">
+    <a href={`/showcase#${title}`}>
       <Button variant="link" className="pl-0">
         <ChevronLeftIcon className="mr-2 h-4 w-4" />back
       </Button>
